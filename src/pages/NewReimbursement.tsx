@@ -16,6 +16,7 @@ export function NewReimbursement(){
         <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Revature-768x768.webp" alt="Revature Logo"></img>
         <h1 className="primary-headings">Expense Reinbursement System</h1>
     </div>
+    
     <div className="main-form-cont">
         <ReimbursementForm form={form} setForm={setForm}/>
         <button className="form-submit-buttons" onClick={handleRequest}>Request Reimbursement</button>
