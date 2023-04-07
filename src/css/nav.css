@@ -1,0 +1,10 @@
+.nav-cont{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    max-height: fit-content;
+    background-color: rgb(206, 206, 206);
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px #838383;
+}

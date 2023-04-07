@@ -4,6 +4,10 @@ import { LoginForm } from "../components/login-form";
 import { LoginRequest } from "../types/types";
 import { Navigate, useNavigate } from "react-router-dom";
 
+import "../css/form-styling.css"
+import "../css/global-styling.css"
+import "../css/nav.css"
+
 export function SigninPage(){
 
     const navigate = useNavigate();
@@ -30,15 +34,17 @@ export function SigninPage(){
     }
 
     return<>
-    <div>
-        <h1>Revature ERS</h1>
+    <div className="nav-cont">
+        <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Revature-768x768.webp" alt="Revature Logo"></img>
+        <h1 className="primary-headings">Expense Reinbursement System</h1>
     </div>
-    <div>
-        <LoginForm logInForm={logInForm} setLogInForm={setLogInForm}/>
-        <button onClick={handleSignIn}>Sign In</button>
-    </div>
+
     {errMsg.length > 0 &&
-    <p>{errMsg}</p>   
-}
+    <p>{errMsg}</p>}
+
+    <div className="main-form-cont">
+        <LoginForm logInForm={logInForm} setLogInForm={setLogInForm}/>
+        <button className="form-submit-buttons" onClick={handleSignIn}>Sign In</button>
+    </div>
     </>
 }
