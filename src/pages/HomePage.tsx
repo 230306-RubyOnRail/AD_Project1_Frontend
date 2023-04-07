@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
 import { Header } from "../components/header";
+import { ReimbursementType } from "../types/types";
 
 
 export function HomePage(){
+
+    const [reimbursements, setReimbursements] = useState<ReimbursementType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:""})
+
+    useEffect(()=>{
+        (async ()=>{
+            const retrievedReims: ReimbursementType[] = await indexReims();
+            setReimbursements(retrievedReims);
+        })();
+    }, [])
 
     return<>
 
