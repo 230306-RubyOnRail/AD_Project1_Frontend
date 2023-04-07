@@ -1,8 +1,8 @@
-import { ReimbursmentForm } from "../types/types"
+import { ReimbursementType } from "../types/types"
 
 type ReimProps = {
-    form: ReimbursmentForm
-    setForm: React.Dispatch<React.SetStateAction<ReimbursmentForm>>
+    form: ReimbursementType
+    setForm: React.Dispatch<React.SetStateAction<ReimbursementType>>
 }
 
 export function ReimbursementForm(props: ReimProps){

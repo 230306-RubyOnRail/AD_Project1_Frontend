@@ -18,7 +18,7 @@ export type LoginRequest = {
     password: string
 }
 
-export type Reimbursment = {
+export type Reimbursement = {
     id: number
     expense_type: string
     date_of_expense: number
@@ -27,7 +27,7 @@ export type Reimbursment = {
     user_id: number
 }
 
-export type ReimbursmentForm = {
+export type ReimbursementType = {
     expense_type: string
     date_of_expense: number
     amount: number
