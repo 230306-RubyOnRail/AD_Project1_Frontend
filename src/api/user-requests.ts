@@ -7,6 +7,7 @@ export type UserDetails = {
     name: string
     email: string
     role: string
+    token: string
 }
 
 export async function logInRequest(loginRequest: LoginRequest){
@@ -18,7 +19,7 @@ export async function logInRequest(loginRequest: LoginRequest){
             "Content-Type":"application/json"
             }});
 
-        if(httpRequest.status === 200){
+        if(httpRequest.status === 201){
             const userInfo:UserDetails = await httpRequest.json();
             return userInfo;
         } else {

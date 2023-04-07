@@ -21,6 +21,7 @@ export function SigninPage(){
             localStorage.setItem("name", currentUser.name)
             localStorage.setItem("email", currentUser.email)
             localStorage.setItem("role", currentUser.role)
+            localStorage.setItem("token", currentUser.token)
             navigate("/home")
           } catch (error) {
             setErrMsg("Invalid Email/Password")
@@ -30,7 +31,7 @@ export function SigninPage(){
     return<>
     <div className="nav-cont">
         <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Revature-768x768.webp" alt="Revature Logo"></img>
-        <h1 className="primary-headings">Expense Reinbursement System</h1>
+        <h1 className="primary-headings">Expense Reimbursement System</h1>
     </div>
 
     {errMsg.length > 0 &&
