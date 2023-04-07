@@ -18,7 +18,6 @@ export function SigninPage(){
     async function handleSignIn(){
         try {
             const currentUser: UserDetails = await logInRequest(logInForm); 
-            localStorage.setItem("user_id", String(currentUser.userId))
             localStorage.setItem("name", currentUser.name)
             localStorage.setItem("email", currentUser.email)
             localStorage.setItem("role", currentUser.role)

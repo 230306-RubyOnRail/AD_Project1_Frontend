@@ -17,9 +17,14 @@ export async function logInRequest(loginRequest: LoginRequest){
             headers:{
             "Content-Type":"application/json"
             }});
-        
-        const userInfo:UserDetails = await httpRequest.json();
-        return userInfo;
+
+        if(httpRequest.status === 200){
+            const userInfo:UserDetails = await httpRequest.json();
+            return userInfo;
+        } else {
+            throw new Error(`HTTP status ${httpRequest.status} received during login request`);
+        }
+
       } catch (error) {
         throw new Error("Error during login request");
       }
