@@ -1,10 +1,53 @@
 .nav-cont{
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     margin: auto;
     max-height: fit-content;
     background-color: rgb(206, 206, 206);
     padding: 10px;
     margin-bottom: 20px;
     box-shadow: 2px 2px #838383;
+}
+
+.button-cont{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-button{
+    padding: 10px;
+    margin-top: 20px;
+    height: fit-content;
+
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 25px;
+    border-color: transparent;
+    background-color: #e6e6e6;
+    color: #f36717;
+}
+
+.nav-button:hover{
+    background-color: #f36717;
+    color: white;
+}
+
+.action-button{
+    padding: 10px;
+    margin-top: 20px;
+    height: fit-content;
+    margin-left: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 25px;
+    border-color: #f36717;
+    background-color: #e6e6e6;
+    color: #f36717;
+}
+
+.action-button:hover{
+    background-color: #f36717;
+    color: white;
 }

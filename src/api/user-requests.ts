@@ -10,16 +10,20 @@ export type UserDetails = {
 }
 
 export async function logInRequest(loginRequest: LoginRequest){
-    const httpRequest = await fetch(`${url}/auth/login`,{
-        method:"POST",
-        body: JSON.stringify(loginRequest),
-        headers:{
-        "Content-Type":"application/json"
-        }});
-    
+    try {
+        const httpRequest = await fetch(`${url}/auth/login`,{
+            method:"POST",
+            body: JSON.stringify(loginRequest),
+            headers:{
+            "Content-Type":"application/json"
+            }});
+        
         const userInfo:UserDetails = await httpRequest.json();
         return userInfo;
-}
+      } catch (error) {
+        throw new Error("Error during login request");
+      }
+    }
 
 export async function postUser(userInfoForm: UserDetails):Promise<UserDetails>{
     const httpRequest = await fetch(`${url}/login`,{

@@ -18,20 +18,15 @@ export function SigninPage(){
     async function handleSignIn(){
         try {
             const currentUser: UserDetails = await logInRequest(logInForm); 
-            if(currentUser){
-                localStorage.setItem("user_id", String(currentUser.userId))
-                localStorage.setItem("name", currentUser.name)
-                localStorage.setItem("email", currentUser.email)
-                localStorage.setItem("role", currentUser.role)
-                navigate("/home")
-            }else {
-                console.log("Invalid user returned from logInRequest");
-                // handle error as needed
-              }
+            localStorage.setItem("user_id", String(currentUser.userId))
+            localStorage.setItem("name", currentUser.name)
+            localStorage.setItem("email", currentUser.email)
+            localStorage.setItem("role", currentUser.role)
+            navigate("/home")
           } catch (error) {
             setErrMsg("Invalid Email/Password")
           }
-    }
+        }
 
     return<>
     <div className="nav-cont">
