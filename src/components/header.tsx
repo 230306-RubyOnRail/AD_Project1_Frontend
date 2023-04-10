@@ -17,6 +17,7 @@ export function Header(props: UserProps){
     return<>
     <div className="nav-cont">
         <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Revature-768x768.webp" alt="Revature Logo"></img>
+        <button className="nav-button" onClick={()=> navigate('/home')}>Home Page</button>
         <h1 className="primary-headings">Expense Reinbursement System</h1>
         <div className="button-cont">
             <button className="nav-button" onClick={()=> navigate('/newreimbursement')}>New Reimbursement</button>

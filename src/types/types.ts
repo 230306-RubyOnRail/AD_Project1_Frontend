@@ -1,6 +1,4 @@
-
 export type User = {
-    user_id: number
     name: string
     email: string
     role: string // add a role field to the backend to distinguish between Admin/Employee
@@ -35,6 +33,17 @@ export type ReimbursementCreateType = {
 }
 
 export type ReimbursementViewType = {
+    id: number
+    expense_type: string
+    date_of_expense: number
+    amount: number
+    additional_comments: string
+    status: string
+    created_at: string
+    updated_at: string
+}
+
+export type ReimbursementAdminType = {
     id: number
     expense_type: string
     date_of_expense: number

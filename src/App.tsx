@@ -18,7 +18,7 @@ function App() {
       <Route path='/register/employee' element={<RegisterEmployee/>}/>
       <Route path='/register/admin' element={<RegisterAdmin/>}/>
       <Route path='/newreimbursement' element={<NewReimbursement/>}/>
-      <Route path='/manage/reimbursements' element={<ManageReimbursementPage/>}/>
+      <Route path='/manage/reimbursements' element={<ManageReimbursementPage role={role}/>}/>
       <Route path='/updatereimbursement/:id' element={<UpdateReimbursement/>}/>
     </Routes>
     </BrowserRouter>
