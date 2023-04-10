@@ -30,15 +30,3 @@ export async function logInRequest(loginRequest: LoginRequest){
         throw new Error("Error during login request");
       }
     }
-
-export async function postUser(userInfoForm: UserDetails):Promise<UserDetails>{
-    const httpRequest = await fetch(`${url}/login`,{
-    method:"POST",
-    body: JSON.stringify(userInfoForm),
-    headers:{
-    "Content-Type":"application/json"
-    }});
-
-    const userInfo:UserDetails = await httpRequest.json();
-    return userInfo;
-}

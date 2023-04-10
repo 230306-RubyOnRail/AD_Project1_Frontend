@@ -4,39 +4,40 @@ import { ReimbursementViewType } from "../types/types";
 import { showUserReims } from "../api/reimbursment-requests"
 import {useNavigate} from "react-router-dom";
 
+type UserProps = {
+    role: string
+}
 
-export function HomePage(){
+export function HomePage(props: UserProps){
 
     const navigate = useNavigate();
     const [reimbursements, setReimbursements] = useState<ReimbursementViewType[]>([])
 
-    let getReims = async () => {
-        let response = await showUserReims();
-        if (response.status === 200) {
-            setReimbursements(response.data);
-            console.log(response.data);
-        } else {
-            console.log('Unable to retrieve user reimbursements');
-        }
-    }
-
-    useEffect(() => {
-        console.log('Use effect is triggered');
-        return function() {
-            console.log('Use effect cleanup (unmounting getReims component)')
-        }
-    }, []);
-
-    useEffect(()=>{
-        getReims();
-    }, []);
+    // let getReims = async () => {
+    //     let response = await showUserReims();
+    //     if (response.status === 200) {
+    //         setReimbursements(response.data);
+    //         console.log(response.data);
+    //     } else {
+    //         console.log('Unable to retrieve user reimbursements');
+    //     }
+    // }
 
     // useEffect(()=>{
-    //     (async ()=>{
-    //         const retrievedReims: ReimbursementType[] = await getReims();
-    //         setReimbursements(retrievedReims);
-    //     })();
-    // }, [])
+    //     getReims();
+    // }, []);
+
+    useEffect(()=>{
+        (async ()=>{
+            let response = await showUserReims();
+            if (response.status === 200) {
+                setReimbursements(response.data);
+                console.log(response.data);
+            } else {
+                console.log('Unable to retrieve user reimbursements');
+            }
+        })();
+    }, [])
 
     return<>
 

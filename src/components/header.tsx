@@ -16,6 +16,8 @@ export function Header(){
         <h1 className="primary-headings">Expense Reinbursement System</h1>
         <div className="button-cont">
             <button className="nav-button" onClick={()=> navigate('/newreimbursement')}>New Reimbursement</button>
+            <button className="nav-button" onClick={()=> navigate('/newreimbursement')}>Manage Reimbursements</button>
+            <button className="nav-button" onClick={()=> navigate('/register/admin')}>Account Management</button>
             <button className="action-button" onClick={handleSignOut}>Sign Out</button>
         </div>
     </div>

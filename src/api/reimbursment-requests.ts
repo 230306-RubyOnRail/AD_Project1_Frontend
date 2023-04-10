@@ -12,6 +12,7 @@ export const showUserReims = async () => {
 export const showReim = async (id: number) :Promise<ReimbursementCreateType> => {
     return await authAppClient.get(`/reimbursements/${id}`);
 }
+
 export async function createReim(reimbursement: ReimbursementCreateType) {
     try {
         const httpRequest = await authAppClient.post(`/reimbursements`, JSON.stringify(reimbursement));

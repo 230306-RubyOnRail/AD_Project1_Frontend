@@ -2,13 +2,17 @@ import { useState } from "react";
 import { UserDetails, logInRequest } from "../api/user-requests";
 import { LoginForm } from "../components/login-form";
 import { LoginRequest } from "../types/types";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../css/form-styling.css"
 import "../css/global-styling.css"
 import "../css/nav.css"
 
-export function SigninPage(){
+type UserProps = {
+    setRole: 
+}
+
+export function SigninPage(props:UserProps){
 
     const navigate = useNavigate();
     const [logInForm, setLogInForm] = useState<LoginRequest>({email:"", password:""});
@@ -40,6 +44,7 @@ export function SigninPage(){
     <div className="main-form-cont">
         <LoginForm logInForm={logInForm} setLogInForm={setLogInForm}/>
         <button className="form-submit-buttons" onClick={handleSignIn}>Sign In</button>
+        <button className="registration-button" onClick={()=> navigate('/register/employee')}>Register</button>
     </div>
     </>
 }
