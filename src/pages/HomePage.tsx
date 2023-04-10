@@ -16,33 +16,6 @@ export function HomePage(props: UserProps){
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [selectedReimbursement, setSelectedReimbursement] = useState<ReimbursementViewType | null>(null);
 
-    let getReims = async () => {
-        let response = await showUserReims();
-        if (response.status === 200) {
-            setReimbursements(response.data);
-            console.log(response.data);
-        } else {
-            console.log('Unable to retrieve user reimbursements');
-        }
-    }
-
-    useEffect(() => {
-        console.log('Use effect is triggered');
-        return function() {
-            console.log('Use effect cleanup (unmounting getReims component)');
-        }
-    }, []);
-
-    useEffect(() => {
-        getReims();
-    }, []);
-
-    // useEffect(()=>{
-    //     (async ()=>{
-    //         const retrievedReims: ReimbursementType[] = await getReims();
-    //         setReimbursements(retrievedReims);
-    //     })();
-    // }, [])
 
     let clickDelete = (reimbursement: ReimbursementViewType) => {
         setSelectedReimbursement(reimbursement);
@@ -61,23 +34,6 @@ export function HomePage(props: UserProps){
         }
         setShowDeleteModal(false);
     }
-
-    // function confirmDelete(id: number) {
-    //     deleteReim(form, id);
-    // }
-    // let getReims = async () => {
-    //     let response = await showUserReims();
-    //     if (response.status === 200) {
-    //         setReimbursements(response.data);
-    //         console.log(response.data);
-    //     } else {
-    //         console.log('Unable to retrieve user reimbursements');
-    //     }
-    // }
-
-    // useEffect(()=>{
-    //     getReims();
-    // }, []);
 
     useEffect(()=>{
         (async ()=>{
