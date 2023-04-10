@@ -9,7 +9,7 @@ export function RegisterAdmin(){
 
     const navigate = useNavigate();
     const [registerForm, setRegisterForm] = useState<UserForm>({name: "", email:"", password:"", role: "admin"});
-    const [errMsg, setErrMsg] = useState<String>("")
+    const [errMsg, setErrMsg] = useState<string>("")
 
     async function handleRegistration(){
         try{
@@ -31,7 +31,7 @@ export function RegisterAdmin(){
 
     <div className="main-form-cont">
         <RegisterForm registerForm={registerForm} setRegisterForm={setRegisterForm}/>
-        <button className="registration-button" onClick={()=> navigate('/register/employee')}>Register</button>
+        <button className="registration-button" onClick={handleRegistration}>Register</button>
     </div>
     </>
 }

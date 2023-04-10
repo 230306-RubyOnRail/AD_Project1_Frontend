@@ -9,7 +9,7 @@ export function NewReimbursement(){
 
     const navigate = useNavigate();
     const [form, setForm] = useState<ReimbursementCreateType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:""})
-    const [errMsg, setErrMsg] = useState<String>("")
+    const [errMsg, setErrMsg] = useState<string>("")
 
     async function handleReimRequest(){
         try {

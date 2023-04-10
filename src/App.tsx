@@ -9,7 +9,7 @@ import { RegisterEmployee } from './pages/RegisterEmployee';
 import { RegisterAdmin } from './pages/RegisterAdmin';
 
 function App() {
-  const [role, setRole] = useState<String>("")
+  const [role, setRole] = useState<string>("")
   return (
     <BrowserRouter>
     <Routes>
@@ -18,7 +18,7 @@ function App() {
       <Route path='/register/employee' element={<RegisterEmployee/>}/>
       <Route path='/register/admin' element={<RegisterAdmin/>}/>
       <Route path='/newreimbursement' element={<NewReimbursement/>}/>
-      <Route path='/managereimbursements' element={<ManageReimbursementPage/>}/>
+      <Route path='/manage/reimbursements' element={<ManageReimbursementPage/>}/>
       <Route path='/updatereimbursement/:id' element={<UpdateReimbursement/>}/>
     </Routes>
     </BrowserRouter>

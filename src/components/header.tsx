@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../navbar/navbar";
 
-export function Header(){
+type UserProps = {
+    role: string
+}
+
+export function Header(props: UserProps){
     
     const navigate = useNavigate();
 
@@ -16,8 +20,11 @@ export function Header(){
         <h1 className="primary-headings">Expense Reinbursement System</h1>
         <div className="button-cont">
             <button className="nav-button" onClick={()=> navigate('/newreimbursement')}>New Reimbursement</button>
-            <button className="nav-button" onClick={()=> navigate('/newreimbursement')}>Manage Reimbursements</button>
+        {props.role === "admin" && <>
+            <button className="nav-button" onClick={()=> navigate('/manage/reimbursements')}>Manage Reimbursements</button>
             <button className="nav-button" onClick={()=> navigate('/register/admin')}>Account Management</button>
+            </>}
+            
             <button className="action-button" onClick={handleSignOut}>Sign Out</button>
         </div>
     </div>

@@ -9,14 +9,14 @@ import "../css/global-styling.css"
 import "../css/nav.css"
 
 type UserProps = {
-    setRole: 
+    setRole: React.Dispatch<React.SetStateAction<string>>
 }
 
 export function SigninPage(props:UserProps){
 
     const navigate = useNavigate();
     const [logInForm, setLogInForm] = useState<LoginRequest>({email:"", password:""});
-    const [errMsg, setErrMsg] = useState<String>("")
+    const [errMsg, setErrMsg] = useState<string>("")
     
 
     async function handleSignIn(){
@@ -26,6 +26,7 @@ export function SigninPage(props:UserProps){
             localStorage.setItem("email", currentUser.email)
             localStorage.setItem("role", currentUser.role)
             localStorage.setItem("token", currentUser.token)
+            props.setRole(currentUser.role)
             navigate("/home")
           } catch (error) {
             setErrMsg("Invalid Email/Password")

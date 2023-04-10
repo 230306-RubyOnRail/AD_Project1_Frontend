@@ -10,7 +10,7 @@ export function UpdateReimbursement(){
     const navigate = useNavigate();
     const params = Number(useParams().id)
     const [form, setForm] = useState<ReimbursementCreateType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:""})
-    const [errMsg, setErrMsg] = useState<String>("")
+    const [errMsg, setErrMsg] = useState<string>("")
 
     useEffect(()=>{
         (async ()=>{

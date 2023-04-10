@@ -31,7 +31,7 @@ export function RegisterEmployee(){
 
     <div className="main-form-cont">
         <RegisterForm registerForm={registerForm} setRegisterForm={setRegisterForm}/>
-        <button className="registration-button" onClick={()=> navigate('/register/employee')}>Register</button>
+        <button className="registration-button" onClick={handleRegistration}>Register</button>
     </div>
     </>
 }
