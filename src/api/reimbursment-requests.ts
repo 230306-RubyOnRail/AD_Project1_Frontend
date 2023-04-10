@@ -1,6 +1,7 @@
-import { ReimbursementCreateType} from "../types/types";
+import { ReimbursementCreateType } from "../types/types";
 import { authAppClient } from "./authenticated-app-client"
 import {ReimbursementForm} from "../components/reimbursement-form";
+import * as http from "http";
 
 const url: string = 'http://127.0.0.1:3000';
 
@@ -33,6 +34,16 @@ export async function updateReim(reimbursement: ReimbursementCreateType, id: num
         const httpRequest = await authAppClient.put(`/reimbursements/${id}`, JSON.stringify(reimbursement),);
 
     } catch (error) {
-        throw new Error("Error during reimbursement post request");
+        throw new Error("Error during reimbursement put request");
+    }
+}
+
+export async function deleteReim(id: number) {
+    try {
+        console.log("deleteReim was called")
+        const httpRequest = await authAppClient.delete(`/reimbursements/${id}`);
+        return httpRequest.status;
+    } catch (error) {
+        throw new Error("Error during reimbursement delete request");
     }
 }
