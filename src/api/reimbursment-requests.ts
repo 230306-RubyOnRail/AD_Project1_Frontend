@@ -14,7 +14,7 @@ export const showReim = async (id: number) :Promise<ReimbursementCreateType> => 
 }
 export async function createReim(reimbursement: ReimbursementCreateType) {
     try {
-        const httpRequest = await authAppClient.post(`/reimbursements`, JSON.stringify(reimbursement),);
+        const httpRequest = await authAppClient.post(`/reimbursements`, JSON.stringify(reimbursement));
 
         // if(httpRequest.status === 201){
         //     // const reimInfo: ReimbursementCreateType = await authAppClient.get(`/reimbursements/show`);

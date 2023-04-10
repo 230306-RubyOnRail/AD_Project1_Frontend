@@ -20,7 +20,7 @@ export function UpdateReimbursement(){
         })();
     }, [])
 
-    async function handleReimRequest(){
+    async function handleUpdateRequest(){
         try {
             await updateReim(form, params);
             navigate('/home')
@@ -41,7 +41,7 @@ export function UpdateReimbursement(){
 
     <div className="main-form-cont">
         <UpdateReimbursementForm form={form} setForm={setForm}/>
-        <button className="form-submit-buttons" onClick={handleReimRequest}>Request Reimbursement</button>
+        <button className="form-submit-buttons" onClick={handleUpdateRequest}>Update Reimbursement</button>
     </div>
     
     </>

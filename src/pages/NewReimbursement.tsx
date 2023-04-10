@@ -13,6 +13,7 @@ export function NewReimbursement(){
 
     async function handleReimRequest(){
         try {
+            console.log(form)
             await createReim(form);
             navigate('/home')
         } catch (error) {
