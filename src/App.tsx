@@ -4,6 +4,7 @@ import { HomePage } from './pages/HomePage';
 import { SigninPage } from './pages/SigninPage';
 import { NewReimbursement } from './pages/NewReimbursement';
 import { ManageReimbursementPage } from './pages/ManageReimbursementPage';
+import {UpdateReimbursement} from "./pages/UpdateReimbursement";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path='/home' element={<HomePage/>}/>
       <Route path='/newreimbursement' element={<NewReimbursement/>}/>
       <Route path='/managereimbursements' element={<ManageReimbursementPage/>}/>
+      <Route path='/updatereimbursement/:id' element={<UpdateReimbursement/>}/>
     </Routes>
     </BrowserRouter>
   );

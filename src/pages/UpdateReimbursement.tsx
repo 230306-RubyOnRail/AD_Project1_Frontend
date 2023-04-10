@@ -1,19 +1,28 @@
-import { useState } from "react";
-import { ReimbursementForm } from "../components/reimbursement-form";
+import {useEffect, useState} from "react";
+import { UpdateReimbursementForm } from "../components/update-reimbursement-form";
 import { ReimbursementCreateType } from "../types/types";
-import { createReim } from "../api/reimbursment-requests";
-import { useNavigate } from "react-router-dom";
+import {showReim, updateReim} from "../api/reimbursment-requests";
+import {useNavigate, useParams} from "react-router-dom";
 
 
-export function NewReimbursement(){
+export function UpdateReimbursement(){
 
     const navigate = useNavigate();
+    const params = Number(useParams().id)
     const [form, setForm] = useState<ReimbursementCreateType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:""})
     const [errMsg, setErrMsg] = useState<String>("")
 
+    useEffect(()=>{
+        (async ()=>{
+            const retrievedReim = await showReim(params);
+            setForm(retrievedReim);
+            console.log(retrievedReim);
+        })();
+    }, [])
+
     async function handleReimRequest(){
         try {
-            await createReim(form);
+            await updateReim(form, params);
             navigate('/home')
         } catch (error) {
             setErrMsg("Please complete all necessary fields in the form")
@@ -31,7 +40,7 @@ export function NewReimbursement(){
             <p>{errMsg}</p>}
 
     <div className="main-form-cont">
-        <ReimbursementForm form={form} setForm={setForm}/>
+        <UpdateReimbursementForm form={form} setForm={setForm}/>
         <button className="form-submit-buttons" onClick={handleReimRequest}>Request Reimbursement</button>
     </div>
     

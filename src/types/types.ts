@@ -27,9 +27,20 @@ export type Reimbursement = {
     user_id: number
 }
 
-export type ReimbursementType = {
+export type ReimbursementCreateType = {
     expense_type: string
     date_of_expense: number
     amount: number
     additional_comments: string
+}
+
+export type ReimbursementViewType = {
+    id: number
+    expense_type: string
+    date_of_expense: number
+    amount: number
+    additional_comments: string
+    status: string
+    created_at: string
+    updated_at: string
 }
