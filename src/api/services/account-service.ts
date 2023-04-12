@@ -21,7 +21,18 @@ export const logInRequest = async (loginRequest: LoginRequest) => {
 
 // Creating Employee Account
 export const createEmployee = async (registrationForm: UserForm) => {
-    return await appClient.post('/signup/employee', JSON.stringify(registrationForm));
+    try {
+        const httpRequest = await appClient.post('/signup/employee', JSON.stringify(registrationForm));
+
+        if(httpRequest.status === 201){
+            return httpRequest;
+        } else {
+            throw new Error(`HTTP status ${httpRequest.status} received during registration request`);
+        }
+
+      } catch (error) {
+        throw new Error("Error during registration request");
+      }
 }
 
 // Creating Admin Account

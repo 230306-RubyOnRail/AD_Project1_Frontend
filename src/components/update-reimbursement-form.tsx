@@ -7,6 +7,12 @@ type ReimProps = {
 
 export function UpdateReimbursementForm(props: ReimProps){
 
+    let dateString = ""
+    if((props.form?.date_of_expense) !== undefined){ 
+        const date = new Date(props.form.date_of_expense * 1000);
+        dateString = date.toISOString().replace('T', ' ').slice(0, 19);
+    }
+
     return<>
     <div className="form-input-cont">
         <p className="form-heading">Update Reimbursement Form</p>
@@ -15,7 +21,7 @@ export function UpdateReimbursementForm(props: ReimProps){
         <input className="form-inputs" type="text" value={props.form.expense_type} onChange={e => props.setForm({...props.form, expense_type: e.target.value})}></input>
 
         <label className="form-labels">Date of Expense:</label>
-        <input className="form-inputs" type="datetime-local" value={new Date(props.form.date_of_expense * 1000).toISOString().substr(0, 16)} onChange={e => props.setForm({...props.form, date_of_expense: new Date(e.target.value).getTime()/1000})}></input>
+        <input className="form-inputs" type="datetime-local" value={dateString} onChange={e => props.setForm({...props.form, date_of_expense: new Date(e.target.value).getTime()/1000})}></input>
 
         <label className="form-labels">Amount:</label>
         <input className="form-inputs" type="number" value={props.form.amount} onChange={e => props.setForm({...props.form, amount: Number(e.target.value)})}></input>

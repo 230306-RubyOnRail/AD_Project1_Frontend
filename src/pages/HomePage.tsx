@@ -5,6 +5,8 @@ import { showUserReims, deleteReim } from "../api/reimbursment-requests"
 import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
+import "../css/home.css"
+
 type UserProps = {
     role: string
 }
@@ -51,30 +53,42 @@ export function HomePage(props: UserProps){
 
     <Header role={props.role}/>
 
-    <p>Welcome to Revature's expense reimbursement app! Our user-friendly platform makes it easy for you to submit your expenses and get reimbursed quickly. 
+    <p className="intro">Welcome to Revature's expense reimbursement app! Our user-friendly platform makes it easy for you to submit your expenses and get reimbursed quickly. 
         Submit expenses on-the-go, from anywhere at any time.</p>
 
-        <p>The following is a list of your currently submitted reimbursements:</p>
+    <p className="text-elements">The following is a list of your current submitted reimbursements:</p>
 
     <div>
         {reimbursements.length === 0 ? (
             <p>No reimbursements to display</p>
         ) : (
-            <ul>
-                {reimbursements.map((reimbursement: ReimbursementViewType) => (
-                    <li key={reimbursement.id}>
-                        <p>Submitted: {reimbursement.created_at}</p>
-                        <p>Last Updated: {reimbursement.updated_at}</p>
-                        <p>Date of Expense: {reimbursement.date_of_expense}</p>
-                        <p>Expense type: {reimbursement.expense_type}</p>
-                        <p>Amount: {reimbursement.amount}</p>
-                        <p>Additional comments: {reimbursement.additional_comments}</p>
-                        <p>Status: {reimbursement.status}</p>
-                        <button onClick={()=> navigate(`/updatereimbursement/${reimbursement.id}`)}>Update</button>
-                        <button onClick={()=> clickDelete(reimbursement)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+            <div className="table-cont">
+                <table className="main-table">
+                    <thead className="thead">
+                        <tr>
+                            <th>Expense Type</th>
+                            <th>Amount</th>
+                            <th>Date of Expense</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody className="tbody">
+                        {reimbursements.map(r => <>
+                        <tr key={r.id}>
+                            <td>{r.expense_type}</td>
+                            <td>{r.amount}</td>
+                            <td>{r.date_of_expense}</td>
+                            <td>{r.status}</td>
+                        </tr>
+                        {r.status === 'Pending' && (
+                            <tr className="update-row">
+                                <td colSpan={4}><button className="update-button" onClick={() => navigate(`/updatereimbursement/${r.id}`)}>Update</button></td>
+                            </tr>
+                        )}
+                        </>)}
+                    </tbody>
+                </table>
+            </div>
         )}
 
         <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>

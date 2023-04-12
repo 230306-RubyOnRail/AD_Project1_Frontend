@@ -12,7 +12,7 @@ export const showUserReims = async () => {
 }
 
 export const showReim = async (id: number) :Promise<ReimbursementCreateType> => {
-    return await authAppClient.get(`/reimbursements/${id}`);
+    return (await authAppClient.get(`/reimbursements/${id}`)).data;
 }
 
 export async function createReim(reimbursement: ReimbursementCreateType) {
@@ -34,6 +34,14 @@ export async function createReim(reimbursement: ReimbursementCreateType) {
 export async function updateReim(reimbursement: ReimbursementCreateType, id: number) {
     try {
         return await authAppClient.put(`/reimbursements/${id}`, JSON.stringify(reimbursement),);
+    } catch (error) {
+        throw new Error("Error during reimbursement put request");
+    }
+}
+
+export async function updateStatus(status: string, id: number) {
+    try {
+        return await authAppClient.put(`/reimbursements/${id}`, JSON.stringify(status),);
     } catch (error) {
         throw new Error("Error during reimbursement put request");
     }

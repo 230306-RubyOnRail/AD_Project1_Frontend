@@ -30,6 +30,7 @@ export type ReimbursementCreateType = {
     date_of_expense: number
     amount: number
     additional_comments: string
+    status: string
 }
 
 export type ReimbursementViewType = {

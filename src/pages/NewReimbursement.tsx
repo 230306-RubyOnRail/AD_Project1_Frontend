@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export function NewReimbursement(){
 
     const navigate = useNavigate();
-    const [form, setForm] = useState<ReimbursementCreateType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:""})
+    const [form, setForm] = useState<ReimbursementCreateType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:"", status:"Pending"})
     const [errMsg, setErrMsg] = useState<string>("")
 
     async function handleReimRequest(){

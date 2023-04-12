@@ -2,10 +2,13 @@
 .logo{
     height: 100px;
     width: 170px;
-    margin-right: 1250px
 }
 
 .primary-headings{
     font-weight: 300;
-    position: fixed;
+}
+
+.error-msg{
+    text-align: center;
+    color: rgb(180, 29, 29);
 }

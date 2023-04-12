@@ -9,20 +9,23 @@ export function UpdateReimbursement(){
 
     const navigate = useNavigate();
     const params = Number(useParams().id)
-    const [form, setForm] = useState<ReimbursementCreateType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:""})
+    const [form, setForm] = useState<ReimbursementCreateType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:"", status:"Pending"})
+    const [updatedForm, setUpdatedForm] = useState<ReimbursementCreateType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:"", status:"Pending"})
+    const [renderUpdateForm, setRenderUpdateForm] = useState<boolean>(false);
     const [errMsg, setErrMsg] = useState<string>("")
 
     useEffect(()=>{
         (async ()=>{
             const retrievedReim = await showReim(params);
+            console.log(retrievedReim)
             setForm(retrievedReim);
-            console.log(retrievedReim);
+            setUpdatedForm(retrievedReim);
         })();
     }, [])
 
     async function handleUpdateRequest(){
         try {
-            await updateReim(form, params);
+            await updateReim(updatedForm, params);
             navigate('/home')
         } catch (error) {
             setErrMsg("Please complete all necessary fields in the form")
@@ -40,9 +43,10 @@ export function UpdateReimbursement(){
             <p>{errMsg}</p>}
 
     <div className="main-form-cont">
-        <UpdateReimbursementForm form={form} setForm={setForm}/>
+        <UpdateReimbursementForm form={updatedForm} setForm={setUpdatedForm}/>
         <button className="form-submit-buttons" onClick={handleUpdateRequest}>Update Reimbursement</button>
     </div>
     
     </>
 }
+
