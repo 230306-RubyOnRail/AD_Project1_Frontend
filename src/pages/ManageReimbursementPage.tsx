@@ -7,6 +7,7 @@ import {Header} from "../components/header";
 import { UserProps } from "./HomePage";
 
 import "../css/manage-reims.css"
+import "../css/global-styling.css"
 
 
 export function ManageReimbursementPage(props: UserProps){
@@ -103,14 +104,14 @@ export function ManageReimbursementPage(props: UserProps){
                 </div>
             ))}
 
-            <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+            <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} className="delete-alert">
                 <Modal.Header closeButton>
-                    <Modal.Title>Confirm deletion</Modal.Title>
+                    <Modal.Title>Confirm Deletion</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     Are you sure you want to delete this reimbursement?
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer className="alert-buttons">
                     <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
                         Cancel
                     </Button>

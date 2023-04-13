@@ -8,6 +8,7 @@ import { Header } from "../components/header";
 import { UserProps } from "./HomePage";
 
 import "../css/global-styling.css"
+import "../css/form-styling.css"
 
 
 export function UpdateReimbursement(props: UserProps){
@@ -60,7 +61,7 @@ export function UpdateReimbursement(props: UserProps){
     <div className="main-form-cont">
         <UpdateReimbursementForm form={updatedForm} setForm={setUpdatedForm}/>
         <button className="form-submit-buttons" onClick={handleUpdateRequest}>Update Reimbursement</button>
-        <button onClick={()=> clickDelete()}>Delete</button>
+        <button className="form-delete-button" onClick={()=> clickDelete()}>Delete</button>
     </div>
     <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} className="delete-alert">
                 <Modal.Header closeButton>
