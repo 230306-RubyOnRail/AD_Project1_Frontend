@@ -1,0 +1,79 @@
+.no-reims{
+    text-align: center;
+    font-size: 20;
+    margin-top: 20px;
+}
+
+.reim-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    padding: 15px;
+    border: 1px solid black;
+    width: 800px;
+    margin-bottom: 25px;
+}
+
+.user-data{
+    display:flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    color: #FFF;
+    background-color: #f36717;
+    margin-bottom: 5px;
+}
+
+.reim-data{
+    display: flex;
+    flex-direction: column;
+}
+
+.comments{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 750px;
+    padding: 5px;
+    background-color: #e6e6e6;;
+}
+
+#comments{
+    margin:30px
+}
+
+.status-update{
+    display: flex;
+    justify-content: center;
+}
+
+.main-reim-info{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#current-status{
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.action-buttons{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.pending-status{
+    color: rgb(90, 91, 92);
+    font-weight: bolder;
+}
+
+.approved-status{
+    color: green;
+    font-weight: bolder;
+}
+
+.denied-status{
+    color:red;
+    font-weight: bolder;
+}

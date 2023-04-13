@@ -45,6 +45,8 @@ export type ReimbursementViewType = {
 }
 
 export type ReimbursementAdminType = {
+    name: string
+    email: string
     id: number
     expense_type: string
     date_of_expense: number

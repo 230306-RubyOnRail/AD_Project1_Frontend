@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import {Header} from "../components/header";
+import { UserProps } from "./HomePage";
 
-type UserProps = {
-    role: string
-}
+import "../css/manage-reims.css"
+
+
 export function ManageReimbursementPage(props: UserProps){
 
     const navigate = useNavigate();
@@ -61,32 +62,43 @@ export function ManageReimbursementPage(props: UserProps){
 
     return<>
 
-        <Header role={props.role}/>
+        <Header role={props.role}  currentPage={props.currentPage} setCurrentPage={props.setCurrentPage}/>
 
         <div>
             {reimbursements.length === 0 ? (
-                <p>No reimbursements to display</p>
+                <p className="no-reims">No reimbursements to display</p>
             ) : (
             reimbursements.map( r =>
-                <div key={r.id}>
-                    <p>Submitted: {r.created_at}</p>
-                    <p>Date of Expense: {r.date_of_expense}</p>
-                    <p>Expense type: {r.expense_type}</p>
-                    <p>Amount: {r.amount}</p>
-                    <p>Additional comments: {r.additional_comments}</p>
-                    <p>Status: {r.status}</p>
-                    <div>
-                        <label>Status: </label>
-                        <select onChange={e => setStatus(e.target.value) }>
+                <div key={r.id} className="reim-cont">
+                    <div className="user-data">
+                        <p>Name: {r.name}</p>
+                        <p>Email: {r.email}</p>
+                    </div>
+                    <div className="reim-data">
+                        <p>Submitted: {r.created_at}</p>
+                        <div className="main-reim-info">
+                            <p>Date of Expense: {r.date_of_expense}</p>
+                            <p>Expense type: {r.expense_type}</p>
+                            <p>Amount: {r.amount}</p>
+                        </div>
+                        <p id="comments-label">Additional comments:</p>
+                        <div className="comments">
+                            <p id="comments">{r.additional_comments}</p>
+                        </div>
+                        <p id="current-status">Current Status: <span className={r.status === 'Pending' ? "pending-status" : r.status === 'Approved' ? "approved-status" : "denied-status"}>{r.status}</span></p>
+                    </div>
+                    <div className="status-update">
+                        <label>Update Status: </label>
+                        <select onChange={e => setStatus(e.target.value)}>
                         <option value={"Pending"}></option>
                             <option value={"Pending"}>Pending</option>
                             <option value={"Approved"}>Approved</option>
-                            <option value={"Denied"}>Denied</option>
+                            <option value={"Denied"} >Denied</option>
                         </select>
                     </div>
-                    <div>
-                    <button onClick={()=>handleUpdateRequest(r, r.id)}>Update Status</button>
-                    <button onClick={()=> clickDelete(r)}>Delete</button>
+                    <div className="action-buttons">
+                        <button onClick={()=>handleUpdateRequest(r, r.id)}>Save Changes</button>
+                        <button onClick={()=> clickDelete(r)}>Delete</button>
                     </div>
                 </div>
             ))}

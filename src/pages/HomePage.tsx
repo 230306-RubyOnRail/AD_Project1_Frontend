@@ -3,12 +3,14 @@ import { Header } from "../components/header";
 import { ReimbursementViewType } from "../types/types";
 import { showUserReims, deleteReim } from "../api/reimbursment-requests"
 import { Modal, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../css/home.css"
 
-type UserProps = {
+export type UserProps = {
     role: string
+    currentPage: string
+    setCurrentPage: React.Dispatch<React.SetStateAction<string>>
 }
 
 export function HomePage(props: UserProps){
@@ -51,7 +53,7 @@ export function HomePage(props: UserProps){
 
     return<>
 
-    <Header role={props.role}/>
+    <Header role={props.role} currentPage={props.currentPage} setCurrentPage={props.setCurrentPage}/>
 
     <p className="intro">Welcome to Revature's expense reimbursement app! Our user-friendly platform makes it easy for you to submit your expenses and get reimbursed quickly. 
         Submit expenses on-the-go, from anywhere at any time.</p>
@@ -66,6 +68,7 @@ export function HomePage(props: UserProps){
                 <table className="main-table">
                     <thead className="thead">
                         <tr>
+                            <th>ID</th>
                             <th>Expense Type</th>
                             <th>Amount</th>
                             <th>Date of Expense</th>
@@ -75,16 +78,19 @@ export function HomePage(props: UserProps){
                     <tbody className="tbody">
                         {reimbursements.map(r => <>
                         <tr key={r.id}>
+                        {r.status === 'Pending' ? (
+                            <Link to={`/updatereimbursement/${r.id}`}><td>{r.id}</td></Link>
+                        ):(<td>{r.id}</td>)}
                             <td>{r.expense_type}</td>
-                            <td>{r.amount}</td>
-                            <td>{r.date_of_expense}</td>
-                            <td>{r.status}</td>
+                            <td>${r.amount}</td>
+                            <td>{convertDate(r.date_of_expense)}</td>
+                            <td className={r.status === 'Pending' ? "pending-status" : r.status === 'Approved' ? "approved-status" : "denied-status"}>{r.status}</td>
                         </tr>
-                        {r.status === 'Pending' && (
+                        {/* {r.status === 'Pending' && (
                             <tr className="update-row">
                                 <td colSpan={4}><button className="update-button" onClick={() => navigate(`/updatereimbursement/${r.id}`)}>Update</button></td>
                             </tr>
-                        )}
+                        )} */}
                         </>)}
                     </tbody>
                 </table>
@@ -111,4 +117,13 @@ export function HomePage(props: UserProps){
     </div>
     
     </>
+}
+
+function convertDate(timeStamp: number){
+    const date = new Date(timeStamp* 1000);
+    const monthAbbrev = date.toLocaleString('default', { month: 'short' });
+    const day = date.getDate();
+    const time = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric' });
+    const formattedDate = `${monthAbbrev} ${day}, ${time}`;
+    return formattedDate
 }

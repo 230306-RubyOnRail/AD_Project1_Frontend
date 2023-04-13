@@ -12,3 +12,29 @@
     text-align: center;
     color: rgb(180, 29, 29);
 }
+
+.delete-alert{
+    margin: auto;
+    padding: 20px;
+    font-size: 18px;
+    background-color: #f36717;
+    color:#FFF;
+    width: 500px;
+    margin-bottom: 50px;
+    border-radius: 25px;
+}
+
+.alert-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+.alert-buttons button{
+    padding: 8px;
+    border-radius: 25px;
+}
+
+.alert-buttons button:hover{
+    background-color:#ffffff
+}

@@ -10,16 +10,17 @@ import { RegisterAdmin } from './pages/RegisterAdmin';
 
 function App() {
   const [role, setRole] = useState<string>("")
+  const [currentPage, setCurrentPage] = useState<string>("")
   return (
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<SigninPage setRole={setRole}/>}/>
-      <Route path='/home' element={<HomePage role={role}/>}/>
+      <Route path='/home' element={<HomePage role={role} currentPage={currentPage} setCurrentPage={setCurrentPage}/>}/>
       <Route path='/register/employee' element={<RegisterEmployee/>}/>
-      <Route path='/register/admin' element={<RegisterAdmin/>}/>
-      <Route path='/newreimbursement' element={<NewReimbursement/>}/>
-      <Route path='/manage/reimbursements' element={<ManageReimbursementPage role={role}/>}/>
-      <Route path='/updatereimbursement/:id' element={<UpdateReimbursement/>}/>
+      <Route path='/register/admin' element={<RegisterAdmin role={role} currentPage={currentPage} setCurrentPage={setCurrentPage}/>}/>
+      <Route path='/newreimbursement' element={<NewReimbursement role={role} currentPage={currentPage} setCurrentPage={setCurrentPage}/>}/>
+      <Route path='/manage/reimbursements' element={<ManageReimbursementPage role={role} currentPage={currentPage} setCurrentPage={setCurrentPage}/>}/>
+      <Route path='/updatereimbursement/:id' element={<UpdateReimbursement role={role} currentPage={currentPage} setCurrentPage={setCurrentPage}/>}/>
     </Routes>
     </BrowserRouter>
   );

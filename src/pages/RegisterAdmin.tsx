@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { UserForm } from "../types/types";
 import { RegisterForm } from "../components/registration-form";
 import { createAdmin } from "../api/services/account-service";
+import { Header } from "../components/header";
+import { UserProps } from "./HomePage";
 
 
-export function RegisterAdmin(){
+export function RegisterAdmin(props: UserProps){
 
     const navigate = useNavigate();
     const [registerForm, setRegisterForm] = useState<UserForm>({name: "", email:"", password:"", role: "admin"});
@@ -21,10 +23,7 @@ export function RegisterAdmin(){
     }
 
     return<>
-    <div className="nav-cont">
-        <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Revature-768x768.webp" alt="Revature Logo"></img>
-        <h1 className="primary-headings">Expense Reimbursement System</h1>
-    </div>
+    <Header role={props.role}  currentPage={props.currentPage} setCurrentPage={props.setCurrentPage}/>
 
     {errMsg.length > 0 &&
     <p>{errMsg}</p>}

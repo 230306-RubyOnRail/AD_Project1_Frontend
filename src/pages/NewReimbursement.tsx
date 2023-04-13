@@ -3,9 +3,11 @@ import { ReimbursementForm } from "../components/reimbursement-form";
 import { ReimbursementCreateType } from "../types/types";
 import { createReim } from "../api/reimbursment-requests";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../components/header";
+import { UserProps } from "./HomePage";
 
 
-export function NewReimbursement(){
+export function NewReimbursement(props: UserProps){
 
     const navigate = useNavigate();
     const [form, setForm] = useState<ReimbursementCreateType>({date_of_expense:0,expense_type:"",amount:0,additional_comments:"", status:"Pending"})
@@ -22,10 +24,7 @@ export function NewReimbursement(){
     }
 
     return<>
-    <div className="nav-cont">
-        <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Revature-768x768.webp" alt="Revature Logo"></img>
-        <h1 className="primary-headings">Expense Reimbursement System</h1>
-    </div>
+    <Header role={props.role}  currentPage={props.currentPage} setCurrentPage={props.setCurrentPage}/>
     
 
         {errMsg.length > 0 &&

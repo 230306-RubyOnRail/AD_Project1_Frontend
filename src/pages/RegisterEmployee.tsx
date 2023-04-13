@@ -4,6 +4,8 @@ import { UserForm } from "../types/types";
 import { RegisterForm } from "../components/registration-form";
 import { createEmployee } from "../api/services/account-service";
 
+import "../css/fixed-nav.css"
+
 
 export function RegisterEmployee(){
 
@@ -21,9 +23,13 @@ export function RegisterEmployee(){
     }
 
     return<>
-    <div className="nav-cont">
-        <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Revature-768x768.webp" alt="Revature Logo"></img>
-        <h1 className="primary-headings">Expense Reimbursement System</h1>
+    <div className="header-cont">
+        <div className="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Revature-768x768.webp" alt="Revature Logo"></img>
+        </div>
+        <div className="website-name">
+            <h1 >Expense Reimbursement System</h1>
+        </div>
     </div>
 
     {errMsg.length > 0 &&

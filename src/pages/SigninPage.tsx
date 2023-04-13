@@ -34,7 +34,7 @@ export function SigninPage(props:UserProps){
         }
 
     return<>
-    <div className="nav-cont">
+    <div className="header-cont">
         <div className="logo">
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Revature-768x768.webp" alt="Revature Logo"></img>
         </div>

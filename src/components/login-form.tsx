@@ -15,7 +15,7 @@ export function LoginForm(props: LoginProps){
         <label className="form-labels">Email</label>
         <input className="form-inputs" type="text" onChange={e => props.setLogInForm({...props.logInForm, email: e.target.value})}></input>
         <label className="form=-labels">Password</label>
-        <input className="form-inputs" type="text" onChange={e => props.setLogInForm({...props.logInForm, password: e.target.value})}></input>
+        <input className="form-inputs" type="password" onChange={e => props.setLogInForm({...props.logInForm, password: e.target.value})}></input>
     </div>
     </>
 }
