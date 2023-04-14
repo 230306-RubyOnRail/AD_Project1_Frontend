@@ -5,6 +5,7 @@ import { RegisterForm } from "../components/registration-form";
 import { createEmployee } from "../api/services/account-service";
 
 import "../css/fixed-nav.css"
+import "../css/global-styling.css"
 
 
 export function RegisterEmployee(){
@@ -33,7 +34,7 @@ export function RegisterEmployee(){
     </div>
 
     {errMsg.length > 0 &&
-    <p>{errMsg}</p>}
+    <p className="error-msg">{errMsg}</p>}
 
     <div className="main-form-cont">
         <RegisterForm registerForm={registerForm} setRegisterForm={setRegisterForm}/>

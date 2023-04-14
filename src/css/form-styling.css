@@ -87,6 +87,8 @@
 }
 
 .registration-button{
+    width: 120px;
+    margin: auto;
     font-size: 15px;
     font-weight: 700;
     padding: 8px;
@@ -96,7 +98,8 @@
     background-color: #e6e6e6;
     color: #f36717;
     border-color: #FFF;
-    margin-bottom: 30px;
+    margin-top: 25px;
+    margin-bottom: 10px;
 }
 
 .registration-button:hover{
