@@ -37,7 +37,7 @@ export function ManageReimbursementPage(props: UserProps){
             let response = await indexReim();
             if (response.status === 200) {
                 setReimbursements(response.data);
-                console.log(response.data);
+
             } else {
                 console.log('Unable to retrieve all reimbursements');
             }

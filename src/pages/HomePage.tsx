@@ -55,6 +55,8 @@ export function HomePage(props: UserProps){
 
     <Header role={props.role} currentPage={props.currentPage} setCurrentPage={props.setCurrentPage}/>
 
+    <p id="welcome-msg">Welcome, {localStorage.getItem("name")} <span id="welcome-role"> { "[" + localStorage.getItem("role") + "]"} </span></p>
+
     <p className="intro">Welcome to Revature's expense reimbursement app! Our user-friendly platform makes it easy for you to submit your expenses and get reimbursed quickly. 
         Submit expenses on-the-go, from anywhere at any time.</p>
 
@@ -86,11 +88,6 @@ export function HomePage(props: UserProps){
                             <td>{convertDate(r.date_of_expense)}</td>
                             <td className={r.status === 'Pending' ? "pending-status" : r.status === 'Approved' ? "approved-status" : "denied-status"}>{r.status}</td>
                         </tr>
-                        {/* {r.status === 'Pending' && (
-                            <tr className="update-row">
-                                <td colSpan={4}><button className="update-button" onClick={() => navigate(`/updatereimbursement/${r.id}`)}>Update</button></td>
-                            </tr>
-                        )} */}
                         </>)}
                     </tbody>
                 </table>
