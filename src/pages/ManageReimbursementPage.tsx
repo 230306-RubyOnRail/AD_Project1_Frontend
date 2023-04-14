@@ -25,13 +25,9 @@ export function ManageReimbursementPage(props: UserProps){
 
     let confirmDelete = async () => {
         if (selectedReimbursement) {
-            let response = await deleteReim(selectedReimbursement.id);
-            if (response === 204) {
-                const updatedReimbursements = reimbursements.filter(r => r.id !== selectedReimbursement.id);
-                setReimbursements(updatedReimbursements);
-            } else {
-                console.log("Error deleting reimbursement");
-            }
+            await deleteReim(selectedReimbursement.id);
+            let updatedReims = await indexReim();
+            setReimbursements(updatedReims.data);
         }
         setShowDeleteModal(false);
     }
@@ -78,7 +74,7 @@ export function ManageReimbursementPage(props: UserProps){
                     <div className="reim-data">
                         <p>Submitted: {r.created_at}</p>
                         <div className="main-reim-info">
-                            <p>Date of Expense: {r.date_of_expense}</p>
+                            <p>Date of Expense: {convertDate(r.date_of_expense)}</p>
                             <p>Expense type: {r.expense_type}</p>
                             <p>Amount: {r.amount}</p>
                         </div>
@@ -124,4 +120,13 @@ export function ManageReimbursementPage(props: UserProps){
         </div>
 
     </>
+}
+
+function convertDate(timeStamp: number){
+    const date = new Date(timeStamp* 1000);
+    const monthAbbrev = date.toLocaleString('default', { month: 'short' });
+    const day = date.getDate();
+    const time = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric' });
+    const formattedDate = `${monthAbbrev} ${day}, ${time}`;
+    return formattedDate
 }

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Header } from "../components/header";
 import { UserProps } from "./HomePage";
 
+import "../css/global-styling.css"
 
 export function NewReimbursement(props: UserProps){
 
@@ -15,9 +16,13 @@ export function NewReimbursement(props: UserProps){
 
     async function handleReimRequest(){
         try {
-            console.log(form)
-            await createReim(form);
-            navigate('/home')
+            if(form.date_of_expense === 0 || form.amount === 0 || form.expense_type === ""){
+                throw new Error("Invalid input fields")
+            } else {
+                await createReim(form);
+                navigate('/home')
+            }
+
         } catch (error) {
             setErrMsg("Please complete all necessary fields in the form")
         }
@@ -28,7 +33,7 @@ export function NewReimbursement(props: UserProps){
     
 
         {errMsg.length > 0 &&
-            <p>{errMsg}</p>}
+            <p className="error-msg">{errMsg}</p>}
 
     <div className="main-form-cont">
         <ReimbursementForm form={form} setForm={setForm}/>

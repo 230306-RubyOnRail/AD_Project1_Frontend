@@ -12,6 +12,7 @@ export function RegisterForm(props: RegisterProps){
 
     return<>
     <div className="form-input-cont">
+    <p className="form-heading">Register a New User:</p>
         <label className="form-labels">Fullname</label>
         <input className="form-inputs" type="text" onChange={e => props.setRegisterForm({...props.registerForm, name: e.target.value})}></input>
         <label className="form-labels">Email</label>

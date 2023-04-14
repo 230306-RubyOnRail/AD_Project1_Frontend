@@ -62,7 +62,7 @@ export function HomePage(props: UserProps){
 
     <div>
         {reimbursements.length === 0 ? (
-            <p>No reimbursements to display</p>
+            <p id="no-reims">No reimbursements to display</p>
         ) : (
             <div className="table-cont">
                 <table className="main-table">
