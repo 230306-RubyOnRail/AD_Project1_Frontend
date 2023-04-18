@@ -1,7 +1,8 @@
 import axios from "axios";
+import { url } from "./app-client";
 
 export const authAppClient = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: `${url}`,
     headers: {
         'Accept': "application/json",
     }

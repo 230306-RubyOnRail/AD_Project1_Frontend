@@ -1,6 +1,5 @@
 import { LoginRequest } from "../types/types";
-
-const url: string = 'http://127.0.0.1:3000';
+import { url } from "./app-client";
 
 export type UserDetails = {
     userId: number
