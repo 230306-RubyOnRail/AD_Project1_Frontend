@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const url = "http://3.134.85.143:3000"
+export const url = "http://18.220.151.85:3000"
 
 export const appClient = axios.create({
     baseURL: `${url}`,
